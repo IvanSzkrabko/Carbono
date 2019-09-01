@@ -1,6 +1,7 @@
 package com.starkind.ivn.carbono;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,35 +17,33 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-/**
- * Created by Ravi Tamada on 18/05/16.
- */
 public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHolder> {
 
     private Context mContext;
     private List<Album> albumList;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, count;
-        public ImageView thumbnail, overflow;
+    class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView description, material;
+        ImageView image, overflow;
 
-        public MyViewHolder(View view) {
+        MyViewHolder(View view) {
             super(view);
-            title = (TextView) view.findViewById(R.id.title);
-            count = (TextView) view.findViewById(R.id.count);
-            thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
-            overflow = (ImageView) view.findViewById(R.id.overflow);
+            description =  view.findViewById(R.id.description);
+            material =  view.findViewById(R.id.material);
+            image = view.findViewById(R.id.image);
+            overflow = view.findViewById(R.id.overflow);
         }
     }
 
 
-    public AlbumsAdapter(Context mContext, List<Album> albumList) {
+    AlbumsAdapter(Context mContext, List<Album> albumList) {
         this.mContext = mContext;
         this.albumList = albumList;
     }
 
+    @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.album_card, parent, false);
 
@@ -52,13 +51,13 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
         Album album = albumList.get(position);
-        holder.title.setText(album.getName());
-        holder.count.setText(album.getMaterial());
+        holder.description.setText(album.getName());
+        holder.material.setText(album.getMaterial());
 
         // loading album cover using Glide library
-        Glide.with(mContext).load(album.getThumbnail()).into(holder.thumbnail);
+        Glide.with(mContext).load(album.getImage()).into(holder.image);
 
         holder.overflow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +84,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
      */
     class MyMenuItemClickListener implements PopupMenu.OnMenuItemClickListener {
 
-        public MyMenuItemClickListener() {
+        MyMenuItemClickListener() {
         }
 
         @Override

@@ -30,12 +30,12 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         initCollapsingToolbar();
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView =  findViewById(R.id.recycler_view);
 
         albumList = new ArrayList<>();
         adapter = new AlbumsAdapter(this, albumList);
@@ -57,16 +57,15 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Initializing collapsing toolbar
-     * Will show and hide the toolbar title on scroll
+     * Will show and hide the toolbar description on scroll
      */
     private void initCollapsingToolbar() {
-        final CollapsingToolbarLayout collapsingToolbar =
-                (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        final CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(" ");
-        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
+        AppBarLayout appBarLayout = findViewById(R.id.appbar);
         appBarLayout.setExpanded(true);
 
-        // hiding & showing the title when toolbar expanded & collapsed
+        // hiding & showing the description when toolbar expanded & collapsed
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             boolean isShow = false;
             int scrollRange = -1;

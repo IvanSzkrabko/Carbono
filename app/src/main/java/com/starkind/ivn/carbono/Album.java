@@ -3,15 +3,19 @@ package com.starkind.ivn.carbono;
 public class Album {
     private String name;
     private String material;
-    private int thumbnail;
+    private int image;
 
     public Album() {
     }
 
-    public Album(String name, String material, int thumbnail) {
-        this.name = name;
+    public Album(String name, String material, int image) {
+        this.setName(name);
+        this.setImage(image);
+        this.setMaterial(material);
+    }
+
+    private void setMaterial(String material) {
         this.material = material;
-        this.thumbnail = thumbnail;
     }
 
     public String getName() {
@@ -26,11 +30,11 @@ public class Album {
         return material;
     }
 
-    public int getThumbnail() {
-        return thumbnail;
+    public int getImage() {
+        return image;
     }
 
-    public void setThumbnail(int thumbnail) {
-        this.thumbnail = thumbnail;
+    public void setImage(int image) {
+        this.image = image;
     }
 }
