@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AlbumsAdapter adapter;
     private List<Album> albumList;
+    private Repository repo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         initCollapsingToolbar();
 
+        repo = new Repository();
         recyclerView =  findViewById(R.id.recycler_view);
 
         albumList = new ArrayList<>();
@@ -90,36 +92,7 @@ public class MainActivity extends AppCompatActivity {
      * Adding few albums for testing
      */
     private void prepareAlbums() {
-        int[] covers = new int[]{
-                R.drawable.album1,
-                R.drawable.album2,
-                R.drawable.album3,
-                R.drawable.album4,
-                R.drawable.album5,
-                R.drawable.album6,
-                R.drawable.album7};
-
-        Album a = new Album("Baja Aleacion", "Acero", covers[0]);
-        albumList.add(a);
-
-        a = new Album("Falla Forjado", "Acero", covers[1]);
-        albumList.add(a);
-
-        a = new Album("Inclusion", "Acero Inoxidable", covers[2]);
-        albumList.add(a);
-
-        a = new Album("Soldadura Defectuosa", "Acero", covers[3]);
-        albumList.add(a);
-
-        a = new Album("Soldadura ZAC", "Acero", covers[4]);
-        albumList.add(a);
-
-        a = new Album("Estructura en Bandas", "Acero", covers[5]);
-        albumList.add(a);
-
-        a = new Album("TT Defectuoso", "Acero", covers[6]);
-        albumList.add(a);
-
+        this.albumList.addAll(this.repo.getAllAlbum());
         adapter.notifyDataSetChanged();
     }
 
