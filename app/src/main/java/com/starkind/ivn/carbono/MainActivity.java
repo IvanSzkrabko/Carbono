@@ -13,8 +13,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private AlbumsAdapter adapter;
     private List<Album> albumList;
     private Repository repo;
+    private String EXTRA_ALBUM_DESCRIPTION;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         initCollapsingToolbar();
+
+        getExtras();
+        ((TextView)findViewById(R.id.backdrop_title)).setText(this.EXTRA_ALBUM_DESCRIPTION);
+
 
         repo = new Repository();
         recyclerView =  findViewById(R.id.recycler_view);
@@ -54,6 +62,15 @@ public class MainActivity extends AppCompatActivity {
             Glide.with(this).load(R.drawable.cover).into((ImageView) findViewById(R.id.backdrop));
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private void getExtras() {
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            this.EXTRA_ALBUM_DESCRIPTION = bundle.getString("EXTRA_ALBUM_DESCRIPTION","todos");
+        }else{
+            this.EXTRA_ALBUM_DESCRIPTION = "todos";
         }
     }
 
@@ -92,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
      * Adding few albums for testing
      */
     private void prepareAlbums() {
-        this.albumList.addAll(this.repo.getAllAlbum());
+        this.albumList.addAll(this.repo.getSubAlbums(this.EXTRA_ALBUM_DESCRIPTION));
         adapter.notifyDataSetChanged();
     }
 

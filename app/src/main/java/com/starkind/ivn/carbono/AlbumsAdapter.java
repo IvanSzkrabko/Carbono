@@ -1,6 +1,7 @@
 package com.starkind.ivn.carbono;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
@@ -44,8 +45,16 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
+        final View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.album_card, parent, false);
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext,MainActivity.class);
+                intent.putExtra("EXTRA_ALBUM_DESCRIPTION",((TextView)itemView.findViewById(R.id.description)).getText());
+                mContext.startActivity(intent);
+            }
+        });
 
         return new MyViewHolder(itemView);
     }
@@ -53,7 +62,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
         Album album = albumList.get(position);
-        holder.description.setText(album.getName());
+        holder.description.setText(album.getDescription());
         holder.material.setText(album.getMaterial());
 
         // loading album cover using Glide library

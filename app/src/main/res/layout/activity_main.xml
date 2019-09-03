@@ -45,7 +45,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/love_music"
+                        android:id="@+id/backdrop_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/backdrop_title"
