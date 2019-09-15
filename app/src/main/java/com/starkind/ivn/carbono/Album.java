@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Album {
     private String description;
     private String material;
+    private String tag_imagen;
     private int image;
     private ArrayList<Album> subAlbums;
 
@@ -16,6 +17,7 @@ public class Album {
         this();
         this.setDescription(description);
         this.setImage(image);
+        this.SetTagImagen(String.valueOf(image));
         this.setMaterial(material);
         this.setSubAlbum(new ArrayList<Album>());
     }
@@ -35,6 +37,14 @@ public class Album {
 
     private void setDescription(String description) {
         this.description = description;
+    }
+
+    private void SetTagImagen(String imagen) {
+        this.tag_imagen = imagen;
+    }
+
+    public String getTag_Imagen() {
+        return tag_imagen;
     }
 
     public String getMaterial() {

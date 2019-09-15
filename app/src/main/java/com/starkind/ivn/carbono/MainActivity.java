@@ -14,7 +14,6 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -28,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private List<Album> albumList;
     private Repository repo;
     private String EXTRA_ALBUM_DESCRIPTION;
+    private String EXTRA_ALBUM_COVER;
+    private Boolean expandir=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         initCollapsingToolbar();
 
         getExtras();
@@ -58,33 +58,22 @@ public class MainActivity extends AppCompatActivity {
         prepareAlbums();
 
         try {
-            Glide.with(this).load(R.drawable.cover).into((ImageView) findViewById(R.id.backdrop));
+            Glide.with(this).load(Integer.parseInt(EXTRA_ALBUM_COVER)).into((ImageView) findViewById(R.id.backdrop));
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        adapter.setOnItemClickListener(new RecyclerViewItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                //Toast.makeText(MainActivity.this, getResources().getString(R.string.clicked_item, albumList.get(position).getAlbumName()), Toast.LENGTH_SHORT).show();
-                Toast.makeText(MainActivity.this, "Click2", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onItemLongClick(View view, int position) {
-                //Toast.makeText(MainActivity.this, getResources().getString(R.string.long_clicked_item, albumList.get(position).getAlbumName()), Toast.LENGTH_SHORT).show();
-                Toast.makeText(MainActivity.this, "Click3", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
+    }//2131165278
 
     private void getExtras() {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            this.EXTRA_ALBUM_DESCRIPTION = bundle.getString("EXTRA_ALBUM_DESCRIPTION","todos");
+            this.EXTRA_ALBUM_DESCRIPTION = bundle.getString("EXTRA_ALBUM_DESCRIPTION","Metales");
+            this.EXTRA_ALBUM_COVER = bundle.getString("EXTRA_ALBUM_COVER","Metales");
+            //Toast.makeText(this, String.valueOf(EXTRA_ALBUM_COVER), Toast.LENGTH_SHORT).show();
         }else{
-            this.EXTRA_ALBUM_DESCRIPTION = "todos";
+            this.EXTRA_ALBUM_DESCRIPTION = "Metales";
+            this.EXTRA_ALBUM_COVER = String.valueOf(R.drawable.index);
         }
     }
 
@@ -96,7 +85,9 @@ public class MainActivity extends AppCompatActivity {
         final CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(" ");
         AppBarLayout appBarLayout = findViewById(R.id.appbar);
-        appBarLayout.setExpanded(true);
+        appBarLayout.setExpanded(true,true);
+
+
 
         // hiding & showing the description when toolbar expanded & collapsed
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
@@ -109,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbar.setTitle(getString(R.string.app_name));
+                    collapsingToolbar.setTitle(EXTRA_ALBUM_DESCRIPTION);
                     isShow = true;
                 } else if (isShow) {
                     collapsingToolbar.setTitle(" ");

@@ -50,7 +50,8 @@
                         android:layout_height="wrap_content"
                         android:text="@string/backdrop_title"
                         android:textColor="@android:color/white"
-                        android:textSize="@dimen/backdrop_title" />
+                        android:textSize="@dimen/backdrop_title"
+                        />
 
                 </LinearLayout>
             </RelativeLayout>

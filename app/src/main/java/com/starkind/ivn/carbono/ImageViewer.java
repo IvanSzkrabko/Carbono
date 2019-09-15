@@ -21,8 +21,8 @@ public class ImageViewer extends AppCompatActivity{
         /*boolean islong = false;
         islong = b.getBoolean("islong");*/
         Bundle b = getIntent().getExtras();
-        int id = b.getInt("album_clicked");
-        //mPhotoView.setImageResource(Database.covers[id]);
+        Integer id = b.getInt("album_clicked");
+        mPhotoView.setImageResource(id);
 
 
     }
