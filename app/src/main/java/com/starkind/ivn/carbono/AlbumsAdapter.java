@@ -36,50 +36,8 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
             tag_imagen =  view.findViewById(R.id.tag_imagen);
             image = view.findViewById(R.id.image);
             overflow = view.findViewById(R.id.overflow);
-/*
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //When item view is clicked, trigger the itemclicklistener
-                    //Because that itemclicklistener is indicated in MainActivity
-                    recyclerViewItemClickListener.onItemClick(v,position);
-                }
-            });
-            view.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    //When item view is clicked long, trigger the itemclicklistener
-                    //Because that itemclicklistener is indicated in MainActivity
-                    recyclerViewItemClickListener.onItemLongClick(v,position);
-                    return true;
-                }
-            });*/
-/*
-            image.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(mContext, "Click444", Toast.LENGTH_SHORT).show();
-                    ImageView iv = (ImageView) v;
-                    String pepe = v.getResources().getResourceName(v.getId());
-                    System.out.println(pepe);
-
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context, ImageViewer.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    intent.putExtra("album_clicked",(int)iv.getTag());
-                    context.startActivity(intent);
-                }
-            });*/
-
         }
     }
-
-    /*
-    //Set method of OnItemClickListener object
-    public void setOnItemClickListener(RecyclerViewItemClickListener recyclerViewItemClickListener){
-        this.recyclerViewItemClickListener=recyclerViewItemClickListener;
-    }*/
 
     AlbumsAdapter(Context mContext, List<Album> albumList) {
         this.mContext = mContext;

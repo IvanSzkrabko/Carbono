@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private Repository repo;
     private String EXTRA_ALBUM_DESCRIPTION;
     private String EXTRA_ALBUM_COVER;
-    private Boolean expandir=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initCollapsingToolbar();
+
 
         getExtras();
         ((TextView)findViewById(R.id.backdrop_title)).setText(this.EXTRA_ALBUM_DESCRIPTION);
@@ -69,12 +69,12 @@ public class MainActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             this.EXTRA_ALBUM_DESCRIPTION = bundle.getString("EXTRA_ALBUM_DESCRIPTION","Metales");
-            this.EXTRA_ALBUM_COVER = bundle.getString("EXTRA_ALBUM_COVER","Metales");
+            this.EXTRA_ALBUM_COVER = bundle.getString("EXTRA_ALBUM_COVER",String.valueOf(R.drawable.index));
             //Toast.makeText(this, String.valueOf(EXTRA_ALBUM_COVER), Toast.LENGTH_SHORT).show();
         }else{
             this.EXTRA_ALBUM_DESCRIPTION = "Metales";
             this.EXTRA_ALBUM_COVER = String.valueOf(R.drawable.index);
-        }
+            }
     }
 
     /**

@@ -3,7 +3,8 @@
     <color name="colorPrimary">#26416D</color>
     <color name="colorPrimaryDark">#26416D</color>
     <color name="colorAccent">#3A558C</color>
-    <color name="viewBg">#f1f5f8</color>
-    <color name="album_title">#4c4c4c</color>
+    <color name="viewBg">#004C4C4C</color>
+    <color name="album_title">#2196F3</color>
     <color name="white">#ffffff</color>
+    <color name="cardview_dark_background2">#615D5D</color>
 </resources>

@@ -14,7 +14,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/cardview_dark_background">
 
             <ImageView
                 android:id="@+id/image"
@@ -64,7 +65,9 @@
                 android:layout_below="@id/image"
                 android:layout_marginTop="@dimen/ic_album_overflow_margin_top"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_dots" />
+                android:src="@drawable/ic_dots"
+                android:tint="@color/album_title"
+                />
 
         </RelativeLayout>
 
