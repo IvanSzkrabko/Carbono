@@ -8,24 +8,31 @@ public class Album {
     private String tag_imagen;
     private int image;
     private ArrayList<Album> subAlbums;
+    private boolean show_me;
 
     public Album() {
         subAlbums = new ArrayList<>();
     }
 
-    public Album(String description, String material, int image) {
+    public Album(boolean show_me,String description, String material, int image) {
         this();
         this.setDescription(description);
         this.setImage(image);
         this.SetTagImagen(String.valueOf(image));
         this.setMaterial(material);
         this.setSubAlbum(new ArrayList<Album>());
+        this.setShow_me(show_me);
     }
 
-    public Album(String description, String material, int image, ArrayList<Album> Albums) {
-        this(description,material,image);
+    public Album(boolean show_me,String description, String material, int image, ArrayList<Album> Albums) {
+        this(show_me,description,material,image);
         this.setSubAlbum(Albums);
+
     }
+
+    private void setShow_me(boolean show_me){this.show_me=show_me;}
+
+    public boolean getShow_me(){return(show_me);}
 
     private void setMaterial(String material) {
         this.material = material;
