@@ -45,11 +45,11 @@ public class Repository {
         albumList.add(AceroInox);
         Album Aceros = new Album(false,"Aceros","",R.drawable.xaceros,new ArrayList<>(Arrays.asList(AceroBA,AceroAA,AceroInox)));
         albumList.add(Aceros);
-        Album FundicionGris = new Album(false,"Fundicion Gris","",R.drawable.xfund_gris);
+        Album FundicionGris = new Album(true,"Fundicion Gris","",R.drawable.xfund_gris);
         albumList.add(FundicionGris);
-        Album FundicionNodular = new Album(false,"Fundicion Nodular","",R.drawable.xfund_nodular);
+        Album FundicionNodular = new Album(true,"Fundicion Nodular","",R.drawable.xfund_nodular);
         albumList.add(FundicionNodular);
-        Album FundicionBlanca = new Album(false,"Fundicion Blanca","",R.drawable.xfund_blanca);
+        Album FundicionBlanca = new Album(true,"Fundicion Blanca","",R.drawable.xfund_blanca);
         albumList.add(FundicionBlanca);
         Album Fundicion = new Album(false,"Fundicion","",R.drawable.xfundicion,new ArrayList<>(Arrays.asList(FundicionGris,FundicionNodular,FundicionBlanca)));
         albumList.add(Fundicion);
