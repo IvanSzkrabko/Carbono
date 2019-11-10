@@ -3,10 +3,10 @@ package com.starkind.ivn.carbono;
 import java.util.ArrayList;
 
 public class Album {
-    private String description;
+    private String description,long_description;
     private String material;
     private String tag_imagen;
-    private int image;
+    private int image,probeta;
     private ArrayList<Album> subAlbums;
     private boolean show_me;
 
@@ -14,7 +14,7 @@ public class Album {
         subAlbums = new ArrayList<>();
     }
 
-    public Album(boolean show_me,String description, String material, int image) {
+    public Album(int probeta,String long_description,boolean show_me,String description, String material, int image) {
         this();
         this.setDescription(description);
         this.setImage(image);
@@ -22,10 +22,12 @@ public class Album {
         this.setMaterial(material);
         this.setSubAlbum(new ArrayList<Album>());
         this.setShow_me(show_me);
+        this.setLongDescription(long_description);
+        this.setProbeta(probeta);
     }
 
-    public Album(boolean show_me,String description, String material, int image, ArrayList<Album> Albums) {
-        this(show_me,description,material,image);
+    public Album(int probeta,String long_description,boolean show_me,String description, String material, int image, ArrayList<Album> Albums) {
+        this(probeta,long_description,show_me,description,material,image);
         this.setSubAlbum(Albums);
 
     }
@@ -38,10 +40,17 @@ public class Album {
         this.material = material;
     }
 
+    public String getLongDescription() {
+        return long_description;
+    }
+
+    private void setLongDescription(String long_description) {
+        this.long_description = long_description;
+    }
+
     public String getDescription() {
         return description;
     }
-
     private void setDescription(String description) {
         this.description = description;
     }
@@ -64,6 +73,14 @@ public class Album {
 
     private void setImage(int image) {
         this.image = image;
+    }
+
+    private void setProbeta(int probeta) {
+        this.probeta = probeta;
+    }
+
+    public int getProbeta() {
+        return probeta;
     }
 
     public ArrayList<Album> getSubAlbum() {

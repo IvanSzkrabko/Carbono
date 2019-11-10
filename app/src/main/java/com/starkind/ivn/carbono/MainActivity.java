@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private Repository repo;
     private String EXTRA_ALBUM_DESCRIPTION;
     private String EXTRA_ALBUM_COVER;
+    private String EXTRA_ALBUM_LONG_DESC;
+    private int EXTRA_ALBUM_PROBETA;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +72,13 @@ public class MainActivity extends AppCompatActivity {
         if (bundle != null) {
             this.EXTRA_ALBUM_DESCRIPTION = bundle.getString("EXTRA_ALBUM_DESCRIPTION","Metales");
             this.EXTRA_ALBUM_COVER = bundle.getString("EXTRA_ALBUM_COVER",String.valueOf(R.drawable.index));
-            //Toast.makeText(this, String.valueOf(EXTRA_ALBUM_COVER), Toast.LENGTH_SHORT).show();
+            this.EXTRA_ALBUM_LONG_DESC = bundle.getString("EXTRA_ALBUM_LONG_DESC");
+            this.EXTRA_ALBUM_PROBETA = bundle.getInt("EXTRA_ALBUM_PROBETA");
+            //Toast.makeText(this, String.valueOf(EXTRA_ALBUM_PROBETA), Toast.LENGTH_SHORT).show();
+            if(EXTRA_ALBUM_PROBETA!=0) {
+                ((TextView) findViewById(R.id.long_description)).setText("Descripcion:\n" + EXTRA_ALBUM_LONG_DESC);
+                ((TextView) findViewById(R.id.num_probeta)).setText("N°Probeta:" + EXTRA_ALBUM_PROBETA+"\n");
+            }
         }else{
             this.EXTRA_ALBUM_DESCRIPTION = "Metales";
             this.EXTRA_ALBUM_COVER = String.valueOf(R.drawable.index);

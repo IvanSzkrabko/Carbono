@@ -24,7 +24,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
     private List<Album> albumList;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView description, material,tag_imagen;
+        TextView description, material,tag_imagen,long_description;
         ImageView image, overflow;
 
         MyViewHolder(View view) {
@@ -86,6 +86,8 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
                 Intent intent = new Intent(mContext,MainActivity.class);
                 intent.putExtra("EXTRA_ALBUM_DESCRIPTION",album.getDescription());
                 intent.putExtra("EXTRA_ALBUM_COVER",album.getTag_Imagen());
+                intent.putExtra("EXTRA_ALBUM_LONG_DESC",album.getLongDescription());
+                intent.putExtra("EXTRA_ALBUM_PROBETA",album.getProbeta());
                 mContext.startActivity(intent);
             }
         });
