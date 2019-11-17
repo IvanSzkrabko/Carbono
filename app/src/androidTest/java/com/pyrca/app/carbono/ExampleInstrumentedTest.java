@@ -1,4 +1,4 @@
-package com.starkind.ivn.carbono;
+package com.pyrca.app.carbono;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.starkind.ivn.carbono", appContext.getPackageName());
+        assertEquals("com.pyrca.app.carbono", appContext.getPackageName());
     }
 }

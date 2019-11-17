@@ -7,4 +7,6 @@
     <color name="album_title">#2196F3</color>
     <color name="white">#ffffff</color>
     <color name="cardview_dark_background2">#615D5D</color>
+    <color name="secondaryColor">#26416D</color>
+    <color name="secondaryLightColor">#2196F3</color>
 </resources>

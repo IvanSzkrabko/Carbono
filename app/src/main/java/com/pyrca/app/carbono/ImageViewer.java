@@ -1,14 +1,12 @@
-package com.starkind.ivn.carbono;
+package com.pyrca.app.carbono;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.github.chrisbanes.photoview.PhotoView;
 
 public class ImageViewer extends AppCompatActivity{
-    public Bitmap scaled;
     public PhotoView mPhotoView;
 
     @Override
