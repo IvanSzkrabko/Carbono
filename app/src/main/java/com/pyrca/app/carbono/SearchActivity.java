@@ -5,10 +5,6 @@ import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class SearchActivity extends Activity {
 
@@ -39,6 +35,7 @@ public class SearchActivity extends Activity {
             intentMainActivity.putExtra("EXTRA_ALBUM_DESCRIPTION",filter.getDescription());
             intentMainActivity.putExtra("EXTRA_ALBUM_COVER",filter.getImage());
             this.startActivity(intentMainActivity);
+            finish();
         }
     }
 
