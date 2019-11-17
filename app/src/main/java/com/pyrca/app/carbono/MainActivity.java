@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.backdrop_title)).setText(this.EXTRA_ALBUM_DESCRIPTION);
 
 
-        repo = new Repository();
+        this.repo = Repository.getInstance();
         recyclerView =  findViewById(R.id.recycler_view);
 
         albumList = new ArrayList<>();
@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
             this.EXTRA_ALBUM_COVER = bundle.getString("EXTRA_ALBUM_COVER",String.valueOf(R.drawable.index));
             this.EXTRA_ALBUM_LONG_DESC = bundle.getString("EXTRA_ALBUM_LONG_DESC");
             this.EXTRA_ALBUM_PROBETA = bundle.getInt("EXTRA_ALBUM_PROBETA");
-            //Toast.makeText(this, String.valueOf(EXTRA_ALBUM_PROBETA), Toast.LENGTH_SHORT).show();
             if(EXTRA_ALBUM_PROBETA!=0) {
                 ((TextView) findViewById(R.id.long_description)).setText("Descripcion:\n" + EXTRA_ALBUM_LONG_DESC);
                 ((TextView) findViewById(R.id.num_probeta)).setText("N°Probeta:" + EXTRA_ALBUM_PROBETA+"\n");
@@ -127,9 +126,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Adding few albums for testing
-     */
     private void prepareAlbums() {
         this.albumList.addAll(this.repo.getSubAlbums(this.EXTRA_ALBUM_DESCRIPTION));
         adapter.notifyDataSetChanged();
@@ -187,7 +183,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.options_menu, menu);
-        // Associate searchable configuration with the SearchView
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));

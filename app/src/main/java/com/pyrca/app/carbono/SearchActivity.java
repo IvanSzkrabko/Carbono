@@ -5,20 +5,40 @@ import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SearchActivity extends Activity {
 
+    private Repository repo;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_container);
+
+        this.repo = Repository.getInstance();
 
         // Get the intent, verify the action and get the query
         Intent intent = getIntent();
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-//            doMySearch(query);
+            Log.d("TAG", query);
+
+            //filtrar albumes
+            //esta funcion setea el album filter de la BD
+            repo.setAlbumsFilter(query);
+            Album filter = repo.filter;
+            Log.d("TAG", filter.toString());
+
+            //llamo main activity con la lista de albumes
+            Intent intentMainActivity = new Intent(this,MainActivity.class);
+            intentMainActivity.putExtra("EXTRA_ALBUM_DESCRIPTION",filter.getDescription());
+            intentMainActivity.putExtra("EXTRA_ALBUM_COVER",filter.getImage());
+            this.startActivity(intentMainActivity);
         }
     }
 

@@ -6,8 +6,20 @@ import java.util.Arrays;
 public class Repository {
 
     ArrayList<Album> albumList;
+    Album filter;
+    private static Repository SINGLE_INSTANCE = null;
 
-    public Repository(){
+
+    public static Repository getInstance() {
+        if (SINGLE_INSTANCE == null) {
+            synchronized(Repository.class) {
+                SINGLE_INSTANCE = new Repository();
+            }
+        }
+        return SINGLE_INSTANCE;
+    }
+
+    private Repository(){
         this.albumList = new ArrayList<>();
         int[] covers = new int[]{
                 R.drawable.album1,
@@ -82,6 +94,10 @@ public class Repository {
 
         Album index = new Album(0,"",false,"Metales","",R.drawable.index,new ArrayList<>(Arrays.asList(ferrosos,no_ferrosos)));
         albumList.add(index);
+
+        this.filter = new Album(0,"",false,"Filter","Filter",R.drawable.index);
+        albumList.add(this.filter);
+
     }
 
     public ArrayList<Album> getAllAlbum(){
@@ -95,5 +111,20 @@ public class Repository {
             }
         }
         return new ArrayList<>();
+    }
+
+    public void setAlbumsFilter(String search){
+        ArrayList<Album> albums = new ArrayList<>();
+        for (Album album: this.albumList) {
+            if(containsInDescriptionAndMaterial(album,search)){
+                albums.add(album);
+            }
+        }
+        filter.setSubAlbum(albums);
+    }
+
+    private boolean containsInDescriptionAndMaterial(Album album, String subString) {
+        return album.getDescription().toLowerCase().contains(subString.toLowerCase()) ||
+                album.getMaterial().toLowerCase().contains(subString.toLowerCase());
     }
 }

@@ -87,7 +87,9 @@ public class Album {
         return this.subAlbums;
     }
 
-    private void setSubAlbum(ArrayList<Album> albums) {
+    public void setSubAlbum(ArrayList<Album> albums) {
+        this.subAlbums.clear();
         this.subAlbums.addAll(albums);
     }
+
 }

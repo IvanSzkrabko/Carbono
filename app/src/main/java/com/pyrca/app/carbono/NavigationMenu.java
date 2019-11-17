@@ -25,20 +25,14 @@ public class NavigationMenu extends AppCompatActivity{
         return new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//                int id = menuItem.getItemId();
+                int id = menuItem.getItemId();
 
-//                if (id == R.id.nav_materias && getContext().getClass() != TreeActivity.class) {
-//                    Intent intent = new Intent(getContext(),TreeActivity.class);
-//                    getContext().startActivity(intent);
-//                } else if (id == R.id.nav_Tareas && getContext().getClass() != ListWorkActivity.class) {
-//                    Intent intent = new Intent(getContext(), ListWorkActivity.class);
-//                    getContext().startActivity(intent);
-//
-//                } else if (id == R.id.nav_calendario && getContext().getClass() != CalendarActivity.class) {
-//                    Intent intent = new Intent(getContext(),CalendarActivity.class);
-//                    getContext().startActivity(intent);
-//                }
-
+                if (id == R.id.nav_inicio) {
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    intent.putExtra("EXTRA_ALBUM_DESCRIPTION","Metales");
+                    intent.putExtra("EXTRA_ALBUM_COVER",R.drawable.index);
+                    getContext().startActivity(intent);
+                    }
                 getDrawer().closeDrawer(GravityCompat.START);
                 return true;
             }
