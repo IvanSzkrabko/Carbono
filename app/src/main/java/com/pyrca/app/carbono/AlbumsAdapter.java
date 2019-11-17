@@ -63,6 +63,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
         final Album album = albumList.get(position);
+        album.getDescription();
         holder.description.setText(album.getDescription());
         holder.material.setText(album.getMaterial());
         holder.tag_imagen.setText(album.getTag_Imagen());
@@ -78,11 +79,27 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
             @Override
             public void onClick(View view) {
                 //Toast.makeText(mContext, String.valueOf(album.getImage()), Toast.LENGTH_SHORT).show();
-                Context context = view.getContext();
-                Intent intent = new Intent(context, com.pyrca.app.carbono.ImageViewer.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("album_clicked",(int)album.getImage());
-                context.startActivity(intent);
+                Intent intent = new Intent(mContext,MainActivity.class);
+                intent.putExtra("EXTRA_ALBUM_DESCRIPTION",album.getDescription());
+                intent.putExtra("EXTRA_ALBUM_COVER",album.getTag_Imagen());
+                intent.putExtra("EXTRA_ALBUM_LONG_DESC",album.getLongDescription());
+                intent.putExtra("EXTRA_ALBUM_PROBETA",album.getProbeta());
+                mContext.startActivity(intent);
+                }
+        });
+
+            holder.image.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                if(album.getShow_me()) {
+                    Context context = view.getContext();
+                    Intent intent = new Intent(context, ImageViewer.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.putExtra("album_clicked", (int) album.getImage());
+                    context.startActivity(intent);
+                    return (true);
+                    }
+                return(false);
             }
         });
     }
