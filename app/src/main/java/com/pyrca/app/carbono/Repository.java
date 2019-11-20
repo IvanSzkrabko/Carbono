@@ -95,7 +95,7 @@ public class Repository {
         Album index = new Album(0,"",false,"Metales","",R.drawable.index,new ArrayList<>(Arrays.asList(ferrosos,no_ferrosos)));
         albumList.add(index);
 
-        this.filter = new Album(0,"",false,"Filter","Filter",R.drawable.index);
+        this.filter = new Album(0,"",false,"Filter","Filter",R.drawable.filter);
         albumList.add(this.filter);
 
     }
@@ -121,6 +121,7 @@ public class Repository {
             }
         }
         filter.setSubAlbum(albums);
+        filter.setDescription(search);
     }
 
     private boolean containsInDescriptionAndMaterial(Album album, String subString) {

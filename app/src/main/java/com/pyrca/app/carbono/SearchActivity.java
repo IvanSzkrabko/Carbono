@@ -28,11 +28,12 @@ public class SearchActivity extends Activity {
             //esta funcion setea el album filter de la BD
             repo.setAlbumsFilter(query);
             Album filter = repo.filter;
+
             Log.d("TAG", filter.toString());
 
             //llamo main activity con la lista de albumes
             Intent intentMainActivity = new Intent(this,MainActivity.class);
-            intentMainActivity.putExtra("EXTRA_ALBUM_DESCRIPTION",filter.getDescription());
+            intentMainActivity.putExtra("EXTRA_ALBUM_DESCRIPTION",query);
             intentMainActivity.putExtra("EXTRA_ALBUM_COVER",filter.getImage());
             this.startActivity(intentMainActivity);
             finish();
