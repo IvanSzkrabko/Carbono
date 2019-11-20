@@ -84,10 +84,11 @@ public class MainActivity extends AppCompatActivity {
             if(EXTRA_ALBUM_PROBETA!=0) {
                 ((TextView) findViewById(R.id.long_description)).setText("Descripcion:\n" + EXTRA_ALBUM_LONG_DESC);
                 ((TextView) findViewById(R.id.num_probeta)).setText("N°Probeta:" + EXTRA_ALBUM_PROBETA+"\n");
-            }
-        }else{
-            this.EXTRA_ALBUM_DESCRIPTION = "Metales";
-            this.EXTRA_ALBUM_COVER = String.valueOf(R.drawable.index);
+                }
+        }else
+            {
+                    this.EXTRA_ALBUM_DESCRIPTION = "Metales";
+                    this.EXTRA_ALBUM_COVER = String.valueOf(R.drawable.index);
             }
     }
 

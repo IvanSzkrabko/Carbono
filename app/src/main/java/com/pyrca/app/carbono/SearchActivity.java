@@ -33,7 +33,7 @@ public class SearchActivity extends Activity {
 
             //llamo main activity con la lista de albumes
             Intent intentMainActivity = new Intent(this,MainActivity.class);
-            intentMainActivity.putExtra("EXTRA_ALBUM_DESCRIPTION",query);
+            intentMainActivity.putExtra("EXTRA_ALBUM_DESCRIPTION","["+query+"]");
             intentMainActivity.putExtra("EXTRA_ALBUM_COVER",filter.getImage());
             this.startActivity(intentMainActivity);
             finish();
